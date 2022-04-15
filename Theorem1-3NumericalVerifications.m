@@ -1,3 +1,5 @@
+
+
 R<u,v,w> := PolynomialRing(Rationals(), 3);
 
 Q1 := -31*u^2 + 12*u*v + 4*u*w - 6*v^2 + 8*v*w + 25*w^2;
