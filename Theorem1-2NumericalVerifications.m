@@ -408,15 +408,19 @@ assert 1 ge newinterval[1] and 1 le newinterval[2]; //1 in newinterval
 //
 /******************************************************************************/
 
-assert Rank(JacobianMatrix([Delta])) eq 1;
+DeltaCurve := Proj(quo<R | Delta>);
 
 T<u,v,w,r,s> := PolynomialRing(Rationals(), 5);
 
-Q1tilde := -u^2 - v^2 - 3*w^2 - r^2;
-Q2tilde :=  3*u^2 + 5*v^2 - r*s;
-Q3tilde :=  -7*u^2 - 23*v^2 - 12*w^2 - s^2;
-assert Rank(JacobianMatrix([Q1tilde, Q2tilde, Q3tilde])) eq 3;
+Q1tilde := -31*u^2 + 12*u*v + 9*u*w - 6*v^2 + 531*v*w + 25*w^2 - r^2;
+Q2tilde :=  -25*u^2 + 120*u*v - 31*u*w + 30*v^2 + 37*v*w - r*s;
+Q3tilde :=  -8047*u^2 + 1092*u*v - 423*u*w - 1446*v^2 - 375*v*w - 25*w^2 - s^2;
 
+I := ideal<T | Q1tilde, Q2tilde, Q3tilde>;
+DeltatildeCurve := Curve(Proj(T),I);
+
+IsNonsingular(DeltaCurve);
+IsNonsingular(DeltatildeCurve);
 
 
 
