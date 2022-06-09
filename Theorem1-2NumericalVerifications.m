@@ -419,9 +419,6 @@ Q3tilde :=  -8047*u^2 + 1092*u*v - 423*u*w - 1446*v^2 - 375*v*w - 25*w^2 - s^2;
 I := ideal<T | Q1tilde, Q2tilde, Q3tilde>;
 DeltatildeCurve := Curve(Proj(T),I);
 
-IsNonsingular(DeltaCurve);
-IsNonsingular(DeltatildeCurve);
-
-
-
+print "Is Delta smooth?", IsNonsingular(DeltaCurve);
+print "Is Deltatilde smooth?", IsNonsingular(DeltatildeCurve);
 
