@@ -46,7 +46,7 @@ Delta := Q3*Q1 - Q2^2;
     27078*u*v*w^2 + 7776*v^4 - 11550*v^3*w - 35945*v^2*w^2 - 25*v*w^3 - 625*w^4
 
 DeltaRestToLine := Evaluate(Delta, [T,1,0]);
-// DeltaRestToLine for this Delta is equal to that for the Delta in Theorem 1.2, 
+// DeltaRestToLine for this Delta is equal to that for the Delta in Theorem 1.3(1), 
 // so the rest of the code goes through exactly as there. 
 
 points := Roots(DeltaRestToLine, F);
