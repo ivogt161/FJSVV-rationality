@@ -19,21 +19,7 @@ GammaBranch:=Determinant(MT);
 4*GammaBranch;
 // 17464*T^6 - 288576*T^5 + 7502108*T^4 - 53765156*T^3 + 1128363667*T^2 + 54275974*T - 1133336585
  
- 
-/******************************************************************************/
-//Check that Delta and Deltatilde are smooth
-//
-/******************************************************************************/
 
-Delta := Q1*Q3 - Q2^2;
-assert Rank(JacobianMatrix([Delta])) eq 1;
-
-T<u,v,w,r,s> := PolynomialRing(Rationals(), 5);
-
-Q1tilde := -31*u^2 + 12*u*v + 4*u*w - 6*v^2 + 8*v*w + 25*w^2 - r^2;
-Q2tilde :=  -25*u^2 + 120*u*v + 9*u*w + 30*v^2 - v*w - r*s;
-Q3tilde :=  -8047*u^2 + 1092*u*v + 4*u*w - 1446*v^2 + 7*v*w - 25*w^2 - s^2;
-assert Rank(JacobianMatrix([Q1tilde, Q2tilde, Q3tilde])) eq 3;
 
 /*****************************************/
 //Claims about Y(RR)
@@ -112,3 +98,23 @@ Factorization(Integers()!Determinant(M));
 Gamma := HyperellipticCurve(-GammaBranch);
 
 print "Does Gamma have Q3 points?", IsLocallySoluble(Gamma, 3);
+
+/******************************************************************************/
+//Check that Delta and Deltatilde are smooth
+//
+/******************************************************************************/
+
+DeltaCurve := Proj(quo<R | Delta>);
+
+T<u,v,w,r,s> := PolynomialRing(Rationals(), 5);
+
+Q1tilde := -31*u^2 + 12*u*v + 4*u*w - 6*v^2 + 8*v*w + 25*w^2 - r^2;
+Q2tilde :=  -25*u^2 + 120*u*v + 9*u*w + 30*v^2 - v*w - r*s;
+Q3tilde :=  -8047*u^2 + 1092*u*v + 4*u*w - 1446*v^2 + 7*v*w - 25*w^2 - s^2;
+
+I := ideal<T | Q1tilde, Q2tilde, Q3tilde>;
+DeltatildeCurve := Curve(Proj(T),I);
+
+print "Is Delta smooth?", IsNonsingular(DeltaCurve);
+print "Is Deltatilde smooth?", IsNonsingular(DeltatildeCurve);
+
