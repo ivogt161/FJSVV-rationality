@@ -1,4 +1,4 @@
-//Theorem 1.2 \label{thm:IrratlConicBundle}
+//Proof of Theorem 1.3(2) - Section 5.3
 
 
 F2<sqrt2> := QuadraticField(2);
