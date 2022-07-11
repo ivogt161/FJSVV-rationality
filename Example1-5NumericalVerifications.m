@@ -1,4 +1,4 @@
-
+//Example 1.5 - Section 5.2
 
 R<u,v,w> := PolynomialRing(Rationals(), 3);
 
