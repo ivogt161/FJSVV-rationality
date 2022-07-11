@@ -1,4 +1,4 @@
-//Theorem 1.3(1) \label{sec:IJTorsorObsNotEnough}
+//Proof of Theorem 1.3(1) - Section 5.1
 
 R<u,v,w> := PolynomialRing(Rationals(), 3);
 
