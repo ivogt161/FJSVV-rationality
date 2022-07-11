@@ -1,4 +1,4 @@
-//Example in paper.
+//Theorem 1.3(1) \label{sec:IJTorsorObsNotEnough}
 
 R<u,v,w> := PolynomialRing(Rationals(), 3);
 
