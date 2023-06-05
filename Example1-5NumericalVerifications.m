@@ -13,11 +13,11 @@ M3 := SymmetricMatrix(Q3);
 AA<T> := PolynomialRing(Rationals());
 
 
-MT := T^2*M1 + 2*T*M2 + M3;
+MT := M1 + 2*T*M2 + T^2*M3;
 GammaBranch:=Determinant(MT);
-// 4366*T^6 - 72144*T^5 + 1875527*T^4 - 13441289*T^3 + 1128363667/4*T^2 + 27137987/2*T - 1133336585/4
+// -1133336585/4*T^6 + 27137987/2*T^5 + 1128363667/4*T^4 - 13441289*T^3 + 1875527*T^2 - 72144*T + 4366
 4*GammaBranch;
-// 17464*T^6 - 288576*T^5 + 7502108*T^4 - 53765156*T^3 + 1128363667*T^2 + 54275974*T - 1133336585
+// -1133336585*T^6 + 54275974*T^5 + 1128363667*T^4 - 53765156*T^3 + 7502108*T^2 - 288576*T + 17464
  
 
 
@@ -25,8 +25,8 @@ GammaBranch:=Determinant(MT);
 //Claims about Y(RR)
 /*****************************************/
 Roots(GammaBranch, RealField());
-// [ <-0.999029069322277088372972131536, 1>, 
-// <0.998728168994702773467777569512, 1> ]
+// [ <-1.00097187430029595946348180493, 1>, 
+// <1.00127345061927853993335232327, 1> ]
 
 for s in [0,2] do
     Qs := Evaluate(MT, s);
@@ -34,8 +34,22 @@ for s in [0,2] do
     print s, [Sign(D[j][j]) : j in [1..3]] cat [-1];
 end for;
 
-// 0 [ -1, -1, -1, -1 ] negative definite - no points in fibers
-// 2 [ -1, -1, 1, -1 ] semi-definite - points in fibers
+// 0 [ -1, -1, 1, -1 ] semi-definite - points in fibers
+// 2 [ -1, -1, -1, -1 ] negative definite - no points in fibers
+
+MT;
+
+Mi1 := -8047*T^2 - 50*T - 31;
+Mi1;
+Roots(Mi1, RealField());
+Mi2 := Minor(MT, 3, 3);
+Mi2;
+Roots(Mi2, RealField());
+Mi3 := Determinant(MT);
+Mi3;
+Roots(Mi3, RealField());
+Evaluate(Mi3, 0);
+Evaluate(Mi3, 2);
 
 /*****************************************/
 //Claims about Ptilde
